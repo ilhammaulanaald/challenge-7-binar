@@ -1,12 +1,18 @@
 import React from 'react'
 import { Button, Card, Col, Row } from 'react-bootstrap'
 import '../CardPayment/CardDesc.css'
+import ModalImage from "react-modal-image";
 
 export const CarDesc = (props) => {
   return (
     <div>
          <Card style={{ width: '405px', height:'485px' }}>
-  <Card.Img style={{paddingTop:'20px', maxHeight:'220px'}} variant="top" src= {props.image} />
+         <ModalImage
+            small={props.image}
+            large={props.image}
+            alt={props.carName}
+            showRotate={true}
+          />
   <Card.Body style={{marginTop:'-10px'}}>
   <Card.Text> <h6><strong>{props.name}</strong></h6></Card.Text>
     <Card.Text>
@@ -34,7 +40,7 @@ export const CarDesc = (props) => {
  </Row>
     </Card.Text>
     <Row>
-    <Col> <Button onClick={props.nextPage} style={{width:'285px', marginLeft:'40px', marginTop:'15px'}} variant="success">Lanjutkan Pembayaran </Button></Col>
+    <Col> <Button onClick={props.nextPage} style={{width:'285px', marginLeft:'40px', marginTop:'5px'}} variant="success">Lanjutkan Pembayaran </Button></Col>
     </Row>
   </Card.Body>
 </Card>

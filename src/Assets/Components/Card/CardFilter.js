@@ -32,12 +32,6 @@ export const CardFilter = () => {
   const [date, setDate] = useState(new Date())
   const [time, setTime] = useState(new Date())
   const [page, setPage] = useState('1')
-  const [InputNama, setInputNama] = useState(null);
-  const [InputHarga, setInputHarga] = useState(null);
-  const [InputFoto, setInputFoto] = useState(null);
-  const [AddDataStat, setAddDataStat] = useState("not");
-  const [SuccessAddStat, setSuccessAddStat] = useState(false);
-  const navigate = useNavigate;
 
   useEffect(() => {
     var axios = require('axios');
@@ -313,7 +307,7 @@ const finishpayment = (id, data) => {
   </form>
   </Card.Body>
 </Card>
-<Button href='/mobilbaru' className='btn-addcar'>Add New Car</Button>
+<Button href='/addcar' className='btn-addcar'>Add New Car</Button>
 <div className='container-xl'>
   <div className='cardhasil'>
       {handleMobil(dataMobil, supir)}
