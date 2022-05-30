@@ -4,20 +4,25 @@ import { useState } from 'react';
 import { Button, Card, Col, Form } from 'react-bootstrap'
 import 'react-dropzone-uploader/dist/styles.css'
 import Dropzone from 'react-dropzone-uploader'
+import { Navigate } from 'react-router';
 
 
 export const AddCar = () => {
 
     const getUploadParams = ({ meta }) => { return { url: 'https://httpbin.org/post' } }
     const handleChangeStatus = ({ meta, file }, status) => { console.log(status, meta, file) }
+    const handleimg = (files, allFiles) => {
+        console.log(files.map(f => f.meta))
+        allFiles.forEach(f => f.remove())
+      }
     
     
 const [dataInput, setDataInput] = useState({
         name: "",
         price: "",
         category:"",
-        image: null,
-        status: "true",
+        image:  "",
+        status: "false",
       });
 
       const handleSubmit = () => {
@@ -29,6 +34,7 @@ const [dataInput, setDataInput] = useState({
           
           axios(config)
           .then(function (response) {
+
             console.log(response);
           })
           .catch(function (error){
@@ -85,7 +91,7 @@ const [dataInput, setDataInput] = useState({
                 type='text'
                 id='inputcategory'
                 placeholder='small/medium/large '
-                value={dataInput.price}
+                value={dataInput.category}
                 onChange={(e) =>
                 setDataInput({
                     ...dataInput,
@@ -100,7 +106,13 @@ const [dataInput, setDataInput] = useState({
 <Dropzone
                         getUploadParams={getUploadParams}
                         onChangeStatus={handleChangeStatus}
-                        onSubmit={handleSubmit}
+                        onSubmit={handleimg}
+                        onChange={(e) =>
+                setDataInput({
+                    ...dataInput,
+                    image: e.target.value,
+                    })
+                }
                         accept="image/*"
                       />
 </Col>

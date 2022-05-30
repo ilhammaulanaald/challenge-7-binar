@@ -38,7 +38,7 @@ export const CardFilter = () => {
 
     var config = {
       method: 'get',
-      url: 'https://rent-cars-api.herokuapp.com/admin/car',
+      url: 'https://rent-car-appx.herokuapp.com/admin/car',
       headers: { }
     };
     
